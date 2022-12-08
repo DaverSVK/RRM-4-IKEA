@@ -1,0 +1,8 @@
+prefix=/home/david/cv_9_ws/src/cmake-build-debug/devel
+
+Name: ik_solver_example
+Description: Description of ik_solver_example
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

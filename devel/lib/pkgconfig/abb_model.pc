@@ -1,0 +1,8 @@
+prefix=/home/david/cv_9_ws/devel
+
+Name: abb_model
+Description: Description of abb_model
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

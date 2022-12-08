@@ -1,0 +1,2 @@
+rrm_cv9/eigen_example:rrm_cv9/ik_solver_example:rrm_cv9/robot/abb_irb4600_60_205_ikfast:rrm_cv9/robot/abb_model:rrm_cv9/robot/abb_moveit_config:rrm_cv9/trajectory_visualization:rrm_cv9/trajectory_visualization_part2
+-DCATKIN_DEVEL_PREFIX=/home/david/cv_9_ws/devel -DCMAKE_INSTALL_PREFIX=/home/david/cv_9_ws/install -G Unix Makefiles

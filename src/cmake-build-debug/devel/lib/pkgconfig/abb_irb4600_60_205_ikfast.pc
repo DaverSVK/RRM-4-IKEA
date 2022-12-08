@@ -1,0 +1,8 @@
+prefix=/home/david/cv_9_ws/src/cmake-build-debug/devel
+
+Name: abb_irb4600_60_205_ikfast
+Description: Description of abb_irb4600_60_205_ikfast
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: moveit_core pluginlib roscpp tf_conversions

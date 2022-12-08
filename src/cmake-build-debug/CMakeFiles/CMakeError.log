@@ -1,0 +1,78 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/david/cv_9_ws/src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/snap/clion/218/bin/ninja/linux/ninja cmTC_25d21 && [1/2] Building C object CMakeFiles/cmTC_25d21.dir/src.c.o
+[2/2] Linking C executable cmTC_25d21
+FAILED: cmTC_25d21 
+: && /usr/bin/cc  -rdynamic CMakeFiles/cmTC_25d21.dir/src.c.o -o cmTC_25d21   && :
+/usr/bin/ld: CMakeFiles/cmTC_25d21.dir/src.c.o: in function `main':
+src.c:(.text+0x46): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x5e): undefined reference to `pthread_cancel'
+/usr/bin/ld: src.c:(.text+0x6f): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/david/cv_9_ws/src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/snap/clion/218/bin/ninja/linux/ninja cmTC_aa19f && [1/2] Building C object CMakeFiles/cmTC_aa19f.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_aa19f
+FAILED: cmTC_aa19f 
+: && /usr/bin/cc -DCHECK_FUNCTION_EXISTS=pthread_create -rdynamic CMakeFiles/cmTC_aa19f.dir/CheckFunctionExists.c.o -o cmTC_aa19f  -lpthreads && :
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the function sgemm_ exists failed with the following output:
+Change Dir: /home/david/cv_9_ws/src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/snap/clion/218/bin/ninja/linux/ninja cmTC_eb392 && [1/2] Building C object CMakeFiles/cmTC_eb392.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_eb392
+FAILED: cmTC_eb392 
+: && /usr/bin/cc -DCHECK_FUNCTION_EXISTS=sgemm_ -rdynamic CMakeFiles/cmTC_eb392.dir/CheckFunctionExists.c.o -o cmTC_eb392   && :
+/usr/bin/ld: CMakeFiles/cmTC_eb392.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x14): undefined reference to `sgemm_'
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the function cheev_ exists failed with the following output:
+Change Dir: /home/david/cv_9_ws/src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/snap/clion/218/bin/ninja/linux/ninja cmTC_db331 && [1/2] Building C object CMakeFiles/cmTC_db331.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_db331
+FAILED: cmTC_db331 
+: && /usr/bin/cc -DCHECK_FUNCTION_EXISTS=cheev_ -rdynamic CMakeFiles/cmTC_db331.dir/CheckFunctionExists.c.o -o cmTC_db331  /usr/lib/x86_64-linux-gnu/libblas.so  -lpthread  -lm  -ldl && :
+/usr/bin/ld: CMakeFiles/cmTC_db331.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x14): undefined reference to `cheev_'
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+
+

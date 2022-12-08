@@ -1,0 +1,8 @@
+prefix=/home/david/cv_9_ws/src/cmake-build-debug/devel
+
+Name: abb_moveit_config
+Description: Description of abb_moveit_config
+Version: 0.3.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

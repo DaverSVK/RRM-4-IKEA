@@ -1,0 +1,91 @@
+/snap/clion/218/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/snap/clion/218/bin/ninja/linux/ninja -G Ninja -S /home/david/cv_9_ws/src -B /home/david/cv_9_ws/src/cmake-build-debug
+-- Using CATKIN_DEVEL_PREFIX: /home/david/cv_9_ws/src/cmake-build-debug/devel
+-- Using CMAKE_PREFIX_PATH: /home/david/cv_9_ws/devel;/home/david/cv3_ws/devel;/opt/ros/noetic
+-- This workspace overlays: /home/david/cv_9_ws/devel;/home/david/cv3_ws/devel;/opt/ros/noetic
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using Debian Python package layout
+-- Using empy: /usr/lib/python3/dist-packages/em.py
+-- Using CATKIN_ENABLE_TESTING: ON
+-- Call enable_testing()
+-- Using CATKIN_TEST_RESULTS_DIR: /home/david/cv_9_ws/src/cmake-build-debug/test_results
+-- Forcing gtest/gmock from source, though one was otherwise available.
+-- Found gtest sources under '/usr/src/googletest': gtests will be built
+-- Found gmock sources under '/usr/src/googletest': gmock will be built
+CMake Deprecation Warning at /usr/src/googletest/CMakeLists.txt:4 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at /usr/src/googletest/googlemock/CMakeLists.txt:45 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at /usr/src/googletest/googletest/CMakeLists.txt:56 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+-- Using Python nosetests: /usr/bin/nosetests3
+-- catkin 0.8.10
+-- BUILD_SHARED_LIBS is on
+-- BUILD_SHARED_LIBS is on
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- ~~  traversing 7 packages in topological order:
+-- ~~  - abb_moveit_config
+-- ~~  - eigen_example
+-- ~~  - abb_model
+-- ~~  - abb_irb4600_60_205_ikfast
+-- ~~  - ik_solver_example
+-- ~~  - trajectory_visualization
+-- ~~  - trajectory_visualization_part2
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- +++ processing catkin package: 'abb_moveit_config'
+-- ==> add_subdirectory(rrm_cv9/robot/abb_moveit_config)
+-- +++ processing catkin package: 'eigen_example'
+-- ==> add_subdirectory(rrm_cv9/eigen_example)
+-- +++ processing catkin package: 'abb_model'
+-- ==> add_subdirectory(rrm_cv9/robot/abb_model)
+CMake Deprecation Warning at rrm_cv9/robot/abb_model/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- +++ processing catkin package: 'abb_irb4600_60_205_ikfast'
+-- ==> add_subdirectory(rrm_cv9/robot/abb_irb4600_60_205_ikfast)
+CMake Deprecation Warning at rrm_cv9/robot/abb_irb4600_60_205_ikfast/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- +++ processing catkin package: 'ik_solver_example'
+-- ==> add_subdirectory(rrm_cv9/ik_solver_example)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- +++ processing catkin package: 'trajectory_visualization'
+-- ==> add_subdirectory(rrm_cv9/trajectory_visualization)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- +++ processing catkin package: 'trajectory_visualization_part2'
+-- ==> add_subdirectory(rrm_cv9/trajectory_visualization_part2)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/david/cv_9_ws/src/cmake-build-debug

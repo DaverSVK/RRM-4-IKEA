@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: trajectory_visualization_part2
+Description: Description of trajectory_visualization_part2
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

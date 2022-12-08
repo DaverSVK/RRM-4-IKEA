@@ -1,0 +1,8 @@
+prefix=/home/david/cv_9_ws/devel
+
+Name: trajectory_visualization
+Description: Description of trajectory_visualization
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
