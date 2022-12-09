@@ -29,6 +29,8 @@ int main(int argc, char **argv)
     Eigen::VectorXd solution_final(6);
     double place_holder_solution = 0;
     double place_holder_compare_2 = 0;
+
+    Eigen::VectorXd solution_previous(6);
     // Sprava pre trajektoriu
     moveit_msgs::RobotTrajectory trajectory;
     // Mena klbov musia byt vyplnene
@@ -54,9 +56,6 @@ int main(int argc, char **argv)
                   1,0,1,0,M_PI/2,M_PI/2,
                   1,U3(0)+U3(1)*pow(t,1)+U3(2)*pow(t,2)+U3(3)*pow(t,3)+U3(4)*pow(t,4),U4(0)+U4(1)*pow(t,1)+U4(2)*pow(t,2)+U4(3)*pow(t,3)+U4(4)*pow(t,4),0,M_PI/2,U5(0)+U5(1)*pow(t,1)+U5(2)*pow(t,2)+U5(3)*pow(t,3)+U5(4)*pow(t,4)+U5(5)*pow(t,5),
                   1,U3(0)+U3(1)*pow(t,1)+U3(2)*pow(t,2)+U3(3)*pow(t,3)+U3(4)*pow(t,4),U4(0)+U4(1)*pow(t,1)+U4(2)*pow(t,2)+U4(3)*pow(t,3)+U4(4)*pow(t,4),0,M_PI/2,U5(0)+U5(1)*pow(t,1)+U5(2)*pow(t,2)+U5(3)*pow(t,3)+U5(4)*pow(t,4)+U5(5)*pow(t,5),
-                  1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0,
-                  1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0,
-                  1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0,
                   1,U6(0)+U6(1)*pow(t,1)+U6(2)*pow(t,2)+U6(3)*pow(t,3),1.6,0,M_PI/2,0;
         ROS_INFO_STREAM("m_IKEA:\n" << m_IKEA);
 
@@ -76,22 +75,22 @@ int main(int argc, char **argv)
             solutions = IKEAsolver(m_IKEA(5,0),m_IKEA(5,1),m_IKEA(5,2),m_IKEA(5,3),m_IKEA(5,4),m_IKEA(5,5));
         }
 
-        double place_holder_compare = abs(solutions[0][0])+abs(solutions[0][1])+abs(solutions[0][2])+abs(solutions[0][3])+abs(solutions[0][4])+abs(solutions[0][5]);
+        double place_holder_compare = abs(solutions[0][0]) + abs(solutions[0][1]) + abs(solutions[0][2]) + abs(solutions[0][3]) + abs(solutions[0][4]) + abs(solutions[0][5]);
 //        ROS_INFO_STREAM("m_IKEA:\n" << place_holder_compare);
 //        ROS_INFO_STREAM("m_IKEA:\n" << solutions.size());
         for (int i=0; i<solutions.size();i++) {
             double place_holder = 0;
             for (int j=0; j<6;j++) {
-                place_holder += abs(solutions[i][j]);
+                place_holder += abs(abs(solution_previous(j))-abs(solutions[i][j]));
                 ROS_INFO_STREAM("m_IKEA:\n" << place_holder);
             }
-            if(abs(place_holder_compare_2-place_holder)<=abs(place_holder_compare_2-place_holder_compare)){
+            if(place_holder_compare > place_holder){
                 place_holder_compare = place_holder;
                 solution_final << solutions[i][0],solutions[i][1],solutions[i][2],solutions[i][3],solutions[i][4],solutions[i][5];
             }
 
         }
-        place_holder_compare_2 = place_holder_compare;
+        solution_previous << solution_final;
         ROS_INFO_STREAM("m_IKEA:\n" << solution_final);
 
         // Vytvorenie prejazdoveho bodu
