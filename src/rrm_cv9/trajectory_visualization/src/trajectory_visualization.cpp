@@ -32,24 +32,22 @@ int main(int argc, char **argv)
             0,0,2,24,192,1280;
     ROS_INFO_STREAM("m1:\n" << m1);
 
-    Eigen::MatrixXd m2(9,9);
-    m2 <<   1,0,0,0,0,0,0,0,0,
-            0,1,0,0,0,0,0,0,0,
-            0,0,2,0,0,0,0,0,0,
-            1,1,1,1,1,1,1,1,1,
-            0,1,2,3,4,5,6,7,8,
-            0,0,2,6,12,20,30,42,56,
-            1,4,16,64,256,1024,4096,16384,65536,
-            0,1,8,48,256,1280,6144,28672,131072,
-            0,0,2,24,192,1280,7680,43008,229376;
+    Eigen::MatrixXd m2(7,7);
+    m2 <<   1,0,0,0,0,0,0,
+            0,1,0,0,0,0,0,
+            0,0,2,0,0,0,0,
+            1,1,1,1,1,1,1,
+            1,4,16,64,256,1024,4096,
+            0,1,8,48,256,1280,6144,
+            0,0,2,24,192,1280,7680;
     ROS_INFO_STREAM("m2:\n" << m2);
 
     Eigen::VectorXd v1(6);
     v1 << 0, 0, 0, M_PI/2, 0, 0;
     ROS_INFO_STREAM("v1 = \n" << v1);
 
-    Eigen::VectorXd v2(9);
-    v2 << 0, 0, 0, M_PI/6, 0, 0, 0, 0, 0;
+    Eigen::VectorXd v2(7);
+    v2 << 0, 0, 0, M_PI/6, 0, 0, 0;
     ROS_INFO_STREAM("v2 = \n" << v2);
     v1 = (m1.inverse() * v1);
     ROS_INFO_STREAM("m1.inverse() * v1 = \n" << v1);
@@ -78,9 +76,9 @@ int main(int argc, char **argv)
         point.accelerations[1] =0;
 
         // Klb 3
-        point.positions[2] = v2[0] + v2[1] * pow(t,1) + v2[2] * pow(t,2) + v2[3] * pow(t,3) + v2[4] * pow(t,4) + v2[5] * pow(t,5) + v2[6] * pow(t,6) +v2[7] * pow(t,7) + v2[8] * pow(t,8);
-        point.velocities[2] =  v2[1] + 2*v2[2]* pow(t,1) + 3*v2[3] * pow(t,2) + 4*v2[4] * pow(t,3) + 5*v2[5]*pow(t,4) + 6*v2[6] * pow(t,5) + 7*v2[7] * pow(t,6) + 8*v2[8] * pow(t,7);
-        point.accelerations[2] =  2*v2[2]* pow(t,1) + 6 * v2[3]* pow(t,1) + 12 * v2[4] * pow(t,2) + 20 * v2[5] * pow(t,3) + 30*v2[6] * pow(t,4) + 42*v2[7] * pow(t,5) + 56*v2[8] * pow(t,6);
+        point.positions[2] = v2[0] + v2[1] * pow(t,1) + v2[2] * pow(t,2) + v2[3] * pow(t,3) + v2[4] * pow(t,4) + v2[5] * pow(t,5) + v2[6] * pow(t,6);
+        point.velocities[2] =  v2[1] + 2*v2[2]* pow(t,1) + 3*v2[3] * pow(t,2) + 4*v2[4] * pow(t,3) + 5*v2[5]*pow(t,4) + 6*v2[6] * pow(t,5);
+        point.accelerations[2] =  2*v2[2]* pow(t,1) + 6 * v2[3]* pow(t,1) + 12 * v2[4] * pow(t,2) + 20 * v2[5] * pow(t,3) + 30*v2[6] * pow(t,4);
 
         // Klb 4
         point.positions[3] = 0;
