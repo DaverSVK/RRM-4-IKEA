@@ -14,6 +14,8 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "trajectory_visualization");
     ros::NodeHandle n;
     ros::Publisher publisher = n.advertise<moveit_msgs::DisplayTrajectory>("trajectory", 1);
+    double jerk_1 = {0};
+    double jerk_3 = {0};
 
     // Sprava pre trajektoriu
     moveit_msgs::RobotTrajectory trajectory;
@@ -66,9 +68,10 @@ int main(int argc, char **argv)
         point.accelerations.resize(6);
 
         // Klb 1
-	point.positions[0] = v1[3]*pow(t,3) + v1[4]*pow(t,4) + v1[5]*pow(t,5);
+	    point.positions[0] = v1[3]*pow(t,3) + v1[4]*pow(t,4) + v1[5]*pow(t,5);
         point.velocities[0] = 3*v1[3]*pow(t,2) + 4*v1[4]*pow(t,3) + 5*v1[5]*pow(t,4);
         point.accelerations[0] = 6*v1[3]*pow(t,1) + 12*v1[4]*pow(t,2) + 20*v1[5]*pow(t,3);
+        jerk_1 = 6*v1[3] + 24*v1[4]*pow(t,1) + 60*v1[5]*pow(t,2);
 
         // Klb 2
         point.positions[1] = 0;
@@ -79,7 +82,7 @@ int main(int argc, char **argv)
         point.positions[2] = v2[0] + v2[1] * pow(t,1) + v2[2] * pow(t,2) + v2[3] * pow(t,3) + v2[4] * pow(t,4) + v2[5] * pow(t,5) + v2[6] * pow(t,6);
         point.velocities[2] =  v2[1] + 2*v2[2]* pow(t,1) + 3*v2[3] * pow(t,2) + 4*v2[4] * pow(t,3) + 5*v2[5]*pow(t,4) + 6*v2[6] * pow(t,5);
         point.accelerations[2] =  2*v2[2]* pow(t,1) + 6 * v2[3]* pow(t,1) + 12 * v2[4] * pow(t,2) + 20 * v2[5] * pow(t,3) + 30*v2[6] * pow(t,4);
-
+        jerk_3 =  6*v2[3] + 24*v2[4]*pow(t,1) + 60*v2[5]*pow(t,2) + 120*v2[6] * pow(t,3);
         // Klb 4
         point.positions[3] = 0;
         point.velocities[3] = 0;
@@ -105,9 +108,12 @@ int main(int argc, char **argv)
         myfile << point.positions[0] << ";";
         myfile << point.velocities[0] << ";";
         myfile << point.accelerations[0] << ";";
+        myfile <<  jerk_1 << ";";
+
         myfile << point.positions[2] << ";";
         myfile << point.velocities[2] << ";";
         myfile << point.accelerations[2] << ";";
+        myfile <<  jerk_3 << ";";
         myfile << "\n";
     }
 
