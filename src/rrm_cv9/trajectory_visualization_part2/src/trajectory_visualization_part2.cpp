@@ -40,6 +40,7 @@ int main(int argc, char **argv)
     double rz_speeeeed_tool =0;
     double rz_acceleration_tool =0;
     Eigen::VectorXd solution_previous(6);
+    solution_previous << 0,0,0,0,0,0;
     // Sprava pre trajektoriu
     moveit_msgs::RobotTrajectory trajectory;
     // Mena klbov musia byt vyplnene
