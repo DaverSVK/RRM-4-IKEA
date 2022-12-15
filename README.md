@@ -6,8 +6,10 @@
   
 -make ¬/ws/ $ catkin make
   
--run abb
-  
--run trajectory visualisation
+-run $ roslaunch abb_moveit_config demo.launch 
+
+-run $ rosrun trajectory_visualization_part2 trajectory_visualization_part2 
+
+
   
   
